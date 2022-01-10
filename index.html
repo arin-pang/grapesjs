@@ -5,6 +5,14 @@
     <title>GrapesJS</title>
     <link rel="stylesheet" href="dist/css/grapes.min.css">
     <script src="dist/grapes.min.js"></script>
+    <script src="node_modules/grapesjs-tui-image-editor/dist/grapesjs-tui-image-editor.min.js"></script>
+    <script src="node_modules/grapesjs-blocks-basic/dist/grapesjs-blocks-basic.min.js"></script>
+    <script src="node_modules/grapesjs-plugin-forms/dist/grapesjs-plugin-forms.min.js"></script>
+    <script src="node_modules/grapesjs-navbar/dist/grapesjs-navbar.min.js"></script>
+    <script src="node_modules/grapesjs-style-bg/dist/grapesjs-style-bg.min.js"></script>
+    <script src="node_modules/grapesjs-blocks-flexbox/dist/grapesjs-blocks-flexbox.min.js"></script>
+    <script src="node_modules/grapesjs-tabs/dist/grapesjs-tabs.min.js"></script>
+    <script src="node_modules/grapesjs-custom-code/dist/grapesjs-custom-code.min.js"></script>
     <style>
       body,
       html {
@@ -79,7 +87,36 @@
     </div>
 
     <script type="text/javascript">
+
+      console.log("JA!");
+      
       var editor = grapesjs.init({
+        plugins: [
+          'grapesjs-tui-image-editor',
+          'grapesjs-blocks-basic',
+          'grapesjs-plugin-forms',
+        ],
+        pluginsOpts: {
+          'grapesjs-tui-image-editor': {
+            config: {
+              includeUI: {
+                initMenu: 'filter',
+              },
+            },
+            icons: {
+              'menu.normalIcon.path': 'image-editor/svg/icon-d.svg',
+              'menu.activeIcon.path': 'image-editor/svg/icon-b.svg',
+              'menu.disabledIcon.path': 'image-editor/svg/icon-a.svg',
+              'menu.hoverIcon.path': 'image-editor/svg/icon-c.svg',
+              'submenu.normalIcon.path': 'image-editor/svg/icon-d.svg',
+              'submenu.activeIcon.path': 'image-editor/svg/icon-c.svg',
+            },
+          },
+          "grapesjs-blocks-basic": {
+            /* ...options */
+          },
+          'grapesjs-plugin-forms': {/* ...options */},
+        },
         showOffsets: 1,
         noticeOnUnload: 0,
         container: '#gjs',
@@ -111,6 +148,10 @@
               name: 'Extra',
               open: false,
               buildProps: ['transition', 'perspective', 'transform'],
+            },{
+              name: 'Statement & Loop',
+              open: false,
+              buildProps: ['statement-rules', 'loop-conditions'],
             }
           ],
         },
